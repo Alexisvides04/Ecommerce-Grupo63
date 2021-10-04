@@ -4,13 +4,12 @@
       <div class="left menu">
         <router-link class="item" to="/">
           <img class="ui small image" src="../assets/logo.png" alt="Ecomerce" />
-
-          <template v-for="category in categories" :key="category.id">
-            <router-link class="item" :to="category.slug">
-              {{ category.title }}
-            </router-link>
-          </template>
         </router-link>
+        <template v-for="category in categories" :key="category.id">
+          <router-link class="item" :to="category.slug">
+            {{ category.title }}
+          </router-link>
+        </template>
       </div>
       <!-- Iniciar sesion -->
       <div class="right menu">
@@ -66,7 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 .ui.menu.secondary {
-  background-color: #16202b;
+  background-color: #4284ca;
 
   .item {
     color: #ffffff;

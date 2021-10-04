@@ -4,7 +4,12 @@
       <div class="left menu">
         <router-link class="item" to="/">
           <img class="ui small image" src="../assets/logo.png" alt="Ecomerce" />
-          <p>Categorias...</p>
+
+          <template v-for="category in categories" :key="category.id">
+            <router-link class="item" :to="category.slug">
+              {{ category.title }}
+            </router-link>
+          </template>
         </router-link>
       </div>
       <!-- Iniciar sesion -->

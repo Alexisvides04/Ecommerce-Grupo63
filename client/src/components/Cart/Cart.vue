@@ -1,7 +1,10 @@
 <template>
   <div class="cart-dimmer" :class="{ open: showCart }" @click="closeCart" />
   <div class="cart" :class="{ open: showCart }">
-    <CartHeader :closeCart="closeCart" />
+    <div>
+      <CartHeader :closeCart="closeCart" />
+      <CartBody :products="products" />
+    </div>
   </div>
 </template>
 
@@ -9,26 +12,30 @@
 import { ref, computed, watchEffect, watch } from 'vue';
 import { useStore } from 'vuex';
 import CartHeader from './CartHeader.vue';
-import { addProductCartApi, getProductsCartApi } from '../../api/cart';
+import CartBody from './CartBody.vue';
+import { getProductsCartApi } from '../../api/cart';
 
 export default {
   name: 'Cart',
   components: {
     CartHeader,
+    CartBody,
   },
 
   setup() {
     const store = useStore();
     const showCart = computed(() => store.state.showCart);
-    let product = ref(null);
+    let products = ref(null);
+    let realoadCart = ref(false);
 
     const getProductsCart = async () => {
       const response = await getProductsCartApi();
-      product.value = response;
+      products.value = response;
     };
 
     watchEffect(() => {
       showCart.value;
+      realoadCart.value;
       getProductsCart();
     });
 
@@ -39,6 +46,7 @@ export default {
     return {
       showCart,
       closeCart,
+      products,
     };
   },
 };

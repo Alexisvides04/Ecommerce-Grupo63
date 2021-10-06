@@ -26,10 +26,11 @@
       "pluginOptions": {}
     },
     "price": {
-      "type": "decimal"
+      "type": "decimal",
+      "required": true
     },
-    "categoty": {
-      "model": "categoty"
+    "category": {
+      "model": "category"
     }
   }
 }

@@ -1,7 +1,8 @@
 <template>
+  <div class="cart-dimmer" :class="{ open: showCart }" @click="closeCart" />
   <div class="cart" :class="{ open: showCart }">
     <h2>Estamos en el carrito</h2>
-    <button>Cerrar</button>
+    <button @click="closeCart">Cerrar</button>
   </div>
 </template>
 
@@ -15,7 +16,14 @@ export default {
     const store = useStore();
     const showCart = computed(() => store.state.showCart);
 
-    return { showCart };
+    const closeCart = () => {
+      store.commit('setShowCart', false);
+    };
+
+    return {
+      showCart,
+      closeCart,
+    };
   },
 };
 </script>

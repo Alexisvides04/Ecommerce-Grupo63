@@ -71,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .ui.menu.secondary {
-  background-color: #4284ca;
+  background-image: url('https://drncvpyikhjv3.cloudfront.net/sites/131/2016/09/21101909/blue-background-header-1.png');
 
   .item {
     color: #ffffff;
